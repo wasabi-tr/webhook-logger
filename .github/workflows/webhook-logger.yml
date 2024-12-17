@@ -17,7 +17,8 @@ jobs:
 
     - name: Log Webhook Payload
       run: |
+        echo "Full GitHub Event Data:" 
+        echo '${{ toJson(github.event) }}' | jq .
+
         echo "Webhook Payload:"
         echo '${{ toJson(github.event.client_payload) }}' | jq .
-      env:
-        GITHUB_EVENT: ${{ toJson(github.event.client_payload) }}
